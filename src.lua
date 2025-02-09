@@ -126,6 +126,8 @@ local SettingsT = {
 
 }
 
+local MoonConfig
+
 local Name = "MoonKavoConfig.JSON"
 
 pcall(function()
@@ -149,6 +151,19 @@ end
 
 function Kavo:DestroyUI()
     game.CoreGui[LibName]:Destroy()
+end
+
+function Kavo:SaveMoonHubConfig(moonconfig)
+	local configStr = HttpService:JSONEncode(moonconfig)
+    	writefile("MoonConfig.txt", configStr)
+end
+
+function Kavo:LoadMoonHubConfig(moonconfig)
+	if isfile("MoonConfig.txt") then
+        local configStr = readfile("MoonConfig.txt")
+        moonconfig = HttpService:JSONDecode(configStr)
+	MoonConfig = HttpService:JSONDecode(configStr)
+    end
 end
 
 function Kavo.CreateLib(kavName, themeList)
@@ -283,6 +298,7 @@ function Kavo.CreateLib(kavName, themeList)
     close.ImageRectOffset = Vector2.new(284, 4)
     close.ImageRectSize = Vector2.new(24, 24)
     close.MouseButton1Click:Connect(function()
+	SaveMoonHubConfig(MoonConfig)
         game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
             ImageTransparency = 1
         }):Play()
