@@ -159,10 +159,16 @@ function Kavo:SaveMoonHubConfig(moonconfig)
 end
 
 function Kavo:LoadMoonHubConfig(moonconfig)
-	if isfile("MoonConfig.txt") then
+    if isfile("MoonConfig.txt") then
         local configStr = readfile("MoonConfig.txt")
-        moonconfig = HttpService:JSONDecode(configStr)
-	MoonConfig = HttpService:JSONDecode(configStr)
+        local loadedConfig = HttpService:JSONDecode(configStr)
+
+        -- Merge settings instead of overwriting
+        for key, value in pairs(loadedConfig) do
+            moonconfig[key] = value
+	    print(moonconfig)
+	    print(value)
+        end
     end
 end
 
