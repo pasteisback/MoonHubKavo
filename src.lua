@@ -126,8 +126,6 @@ local SettingsT = {
 
 }
 
-local MoonConfig
-
 local Name = "MoonKavoConfig.JSON"
 
 pcall(function()
