@@ -158,6 +158,10 @@ function Kavo:DestroyUI()
 	game.CoreGui[LibName]:Destroy()
 end
 
+function Kavo:GetUIName()
+	return LibName
+end
+
 function Kavo.CreateLib(kavName, themeList)
 	if not themeList then
 		themeList = themes
