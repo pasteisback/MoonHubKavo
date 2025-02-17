@@ -1,3 +1,5 @@
+--ui lib made by xhept
+--modifed by ramingcactus
 local Kavo = {}
 
 local tween = game:GetService("TweenService")
