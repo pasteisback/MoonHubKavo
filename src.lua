@@ -333,7 +333,7 @@ function Kavo.CreateLib(kavName, themeList)
 	tabFrames.BackgroundTransparency = 1.000
 	tabFrames.Position = UDim2.new(0.0438990258, 0, -0.00066378375, 0)
 	tabFrames.Size = UDim2.new(0, 135, 0, 283)
-	tabFrame.ScrollBarThickness = 0
+	tabFrames.ScrollBarThickness = 0
 
 	tabListing.Name = "tabListing"
 	tabListing.Parent = tabFrames
